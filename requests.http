@@ -5,11 +5,11 @@ Content-Type: application/json
   "IdDomicilio": 10,
   "IdPedido": 3,
   "IdDomiciliario": 1,
-  "Observacion": "Entrega  para el Miercoles",
+  "Observacion": "Entrega  para el Jueves",
   "FechaEntrega": "2023-12-4",
   "DireccionDomicilio": "Calle Principal 123",
   "HoraEntrega": "12:00", 
-  "EstadoDomicilio": "Pendiente"
+  "EstadoDomicilio": "Realizado"
 }
 ###
 GET  http://localhost:3000/api/domicilio HTTP/1.1

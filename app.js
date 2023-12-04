@@ -10,8 +10,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use('/api/domicilio', domicilioRoute); // Montar domicilioRoute en /api/domicilio
-app.use('/api/user', userRoute); // Montar userRoute en /api/user
+app.use('/api/domicilio'); // Montar domicilioRoute en /api/domicilio
+app.use('/api/user'); // Montar userRoute en /api/user
 
 app.get('/', (req, res) => {
     res.send('¡Bienvenido a mi API!');
