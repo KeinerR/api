@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const cors = require("cors");
 const domicilioRoute = require('./routes/domicilio');
 const userRoute = require('./routes/user'); // Asegúrate de tener la ruta correcta hacia tus rutas de usuario
 
@@ -10,6 +11,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use(cosr());
 app.use('/api/domicilio', domicilioRoute);
 app.use('/api/user', userRoute);
  // Montar userRoute en /api/user
