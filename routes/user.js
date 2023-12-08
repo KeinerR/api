@@ -26,6 +26,21 @@ router.get("/:id", (req, res) => {
         .catch((error) => res.status(500).json({ message: error.message }));
 });
 
+
+// Obtener usuario por Usuario
+router.get("/:usuario", (req, res) => {
+    const { usuario } = req.params;
+    User
+        .findById(usuario)
+        .then((data) => {
+            if (!data) {
+                return res.status(404).json({ message: 'Usuario no encontrado' });
+            }
+            res.json(data);
+        })
+        .catch((error) => res.status(500).json({ message: error.message }));
+});
+
 // Eliminar usuario por ID
 router.delete("/:id", (req, res) => {
     const { id } = req.params;
