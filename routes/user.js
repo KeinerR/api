@@ -13,31 +13,31 @@ router.post("/", (req, res) => {
 });
 
 // Obtener usuario por ID
-router.get("/:id", (req, res) => {
-    const { id } = req.params;
-    User
-        .findById(id)
-        .then((data) => {
-            if (!data) {
-                return res.status(404).json({ message: 'Usuario no encontrado' });
-            }
-            res.json(data);
-        })
-        .catch((error) => res.status(500).json({ message: error.message }));
-});
+router.get("/:parametro", (req, res) => {
+  const { parametro } = req.params;
 
-
-// Obtener usuario por Usuario
-router.get("/:usuario", (req, res) => {
-  const { usuario } = req.params;
-  User.findOne({ Usuario: usuario }) // Cambiado de findById a findOne
-    .then((data) => {
-      if (!data) {
-        return res.status(404).json({ message: "Usuario no encontrado" });
-      }
-      res.json(data);
-    })
-    .catch((error) => res.status(500).json({ message: error.message }));
+  // Verificar si el parámetro es un ObjectId válido
+  if (Types.ObjectId.isValid(parametro)) {
+    // Si es un ObjectId, buscar por ID
+    User.findById(parametro)
+      .then((data) => {
+        if (!data) {
+          return res.status(404).json({ message: "Usuario no encontrado" });
+        }
+        res.json(data);
+      })
+      .catch((error) => res.status(500).json({ message: error.message }));
+  } else {
+    // Si no es un ObjectId válido, buscar por nombre de usuario
+    User.findOne({ Usuario: parametro })
+      .then((data) => {
+        if (!data) {
+          return res.status(404).json({ message: "Usuario no encontrado" });
+        }
+        res.json(data);
+      })
+      .catch((error) => res.status(500).json({ message: error.message }));
+  }
 });
 
 
