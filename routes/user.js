@@ -1,7 +1,8 @@
 const express = require('express');
 const User = require("../models/user");
+const mongoose = require("mongoose");
 const router = express.Router();
-const {Types} = mongooes;
+const {Types} = mongoose;
 
 // Crear usuario
 router.post("/", (req, res) => {
