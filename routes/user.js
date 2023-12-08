@@ -31,7 +31,7 @@ router.get("/:id", (req, res) => {
 router.get("/:usuario", (req, res) => {
     const { usuario } = req.params;
     User
-        .findById(usuario)
+        .find(usuario)
         .then((data) => {
             if (!data) {
                 return res.status(404).json({ message: 'Usuario no encontrado' });
