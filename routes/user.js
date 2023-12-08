@@ -29,17 +29,17 @@ router.get("/:id", (req, res) => {
 
 // Obtener usuario por Usuario
 router.get("/:usuario", (req, res) => {
-    const { usuario } = req.params;
-    User
-        .find(usuario)
-        .then((data) => {
-            if (!data) {
-                return res.status(404).json({ message: 'Usuario no encontrado' });
-            }
-            res.json(data);
-        })
-        .catch((error) => res.status(500).json({ message: error.message }));
+  const { usuario } = req.params;
+  User.findOne({ Usuario: usuario }) // Cambiado de findById a findOne
+    .then((data) => {
+      if (!data) {
+        return res.status(404).json({ message: "Usuario no encontrado" });
+      }
+      res.json(data);
+    })
+    .catch((error) => res.status(500).json({ message: error.message }));
 });
+
 
 // Eliminar usuario por ID
 router.delete("/:id", (req, res) => {
