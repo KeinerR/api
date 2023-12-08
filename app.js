@@ -11,7 +11,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use(cosr());
+app.use(cors());
 app.use('/api/domicilio', domicilioRoute);
 app.use('/api/user', userRoute);
  // Montar userRoute en /api/user
